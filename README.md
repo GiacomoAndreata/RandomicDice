@@ -10,5 +10,8 @@ Ho deciso di suddividere il progetto in più step:
 ![GY-521 MPU-6050](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/img/GY-521%20-%20Layout03.jpg)
 
 2.  Utilizzo dello shift register (74hc595) per il controllo del display a 1 bit, così da ridurre i pin da 10 a 3. [Sketch_shiftRegister](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/Shift_Register.ino)
+
+![img 74hc595](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/img/74595.png)
+
 3.  Creazione della funzione che allo squotimento dell'accellerometro fa partire la funzione_1 e poi mostra il numero sul display.
 4.  ...
