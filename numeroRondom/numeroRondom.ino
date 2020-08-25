@@ -1,4 +1,3 @@
-// MPU-6050 Short Example Sketch
 #include<Wire.h>
 
 //giroscopio
@@ -14,7 +13,7 @@ void setup(){
   Wire.begin();
   Wire.beginTransmission(MPU);
   Wire.write(0x6B);  // PWR_MGMT_1 register
-  Wire.write(0);     // set to zero (wakes up the MPU-6050)
+  Wire.write(0);     // set zero (wakes up the MPU-6050)
   Wire.endTransmission(true);
 
 }
@@ -33,21 +32,6 @@ void loop(){
   GyZ=Wire.read()<<8|Wire.read();  // 0x47 (GYRO_ZOUT_H) & 0x48 (GYRO_ZOUT_L)
 
   Serial.print("X: "); Serial.println(AcX);
-  
-  /*
-  Serial.print("Accelerometer: ");
-  Serial.print("X = "); Serial.print(AcX);
-  Serial.print(" | Y = "); Serial.print(AcY); 
-  Serial.print(" | Z = "); Serial.println(AcZ);
-  //equation for temperature in degrees C from datasheet
-  Serial.print("Temperature: "); Serial.print(Tmp/340.00+36.53); Serial.println(" C ");
-  
-  Serial.print("Gyroscope: ");
-  Serial.print("X = "); Serial.print(GyX);
-  Serial.print(" | Y = "); Serial.print(GyY);
-  Serial.print(" | Z = "); Serial.println(GyZ);
-  Serial.println(" ");
-  delay(500);*/
   
   randomSeed(AcX);
   numberRandom = random(10);
