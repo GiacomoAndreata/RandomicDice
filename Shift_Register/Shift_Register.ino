@@ -1,6 +1,8 @@
-int latchPin = 5;  // Latch pin of 74HC595 is connected to Digital pin 5
-int clockPin = 6; // Clock pin of 74HC595 is connected to Digital pin 6
-int dataPin = 4;  // Data pin of 74HC595 is connected to Digital pin 4
+//scketch Schift Register 74HC595
+
+int latchPin = 5;  // Latch pin Digital pin 5
+int clockPin = 6; // Clock pin Digital pin 6
+int dataPin = 4;  // Data pin Digital pin 4
 int input = 0;
 byte leds = 0;
 String inString = ""; 
@@ -29,6 +31,7 @@ void loop() {
   }
 }
 
+//Metodo per stampare sul display un numero tra 0 e 9
 void setNumero(int numero){
   switch(numero){
     case 0:
