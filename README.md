@@ -16,3 +16,4 @@ Ho deciso di suddividere il progetto in più step:
 3.  Funzione_2: allo squotimento dell'accellerometro fa partire la funzione_1 e poi mostra il numero sul display.
 4.  Funzione_: quando il cubo una volta che è stato mosso viene posato, mostra il numero sul display.
 5.  Aggiunta di uno o più bottoni per settare il range del dado (default 0 - 9)
+6. ...
