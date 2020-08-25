@@ -11,7 +11,7 @@ Ho deciso di suddividere il progetto in più step:
 
 2.  Utilizzo dello shift register (74hc595) per il controllo del display a 1 bit, così da ridurre i pin da 10 a 3. [Sketch_shiftRegister](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/Shift_Register.ino)
 
-![img 74hc595](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/img/74595.png)
+![img 74hc595 e display](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/img/Schema%20SchiftRegister%20e%20Display.png)
 
 3.  Creazione della funzione che allo squotimento dell'accellerometro fa partire la funzione_1 e poi mostra il numero sul display.
 4.  ...
