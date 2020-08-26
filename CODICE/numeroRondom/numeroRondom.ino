@@ -23,7 +23,7 @@ void loop(){
   AcX=mpu6050.getAccX();  //    
   AcY=mpu6050.getAccY();  //
   AcZ=mpu6050.getAccZ();  //
-  Tmp=mpu6050.getTemp();  //
+  //Tmp=mpu6050.getTemp();  //
   GyX=mpu6050.getGyroX();  //
   GyY=mpu6050.getGyroY();  //
   GyZ=mpu6050.getGyroZ();  //
