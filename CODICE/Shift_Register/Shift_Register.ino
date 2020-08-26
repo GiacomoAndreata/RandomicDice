@@ -15,6 +15,7 @@ void setup() {
 }
 
 void loop() {
+  /* //Inserimento valori da monitor seriale
   while (Serial.available() > 0) {
     int inChar = Serial.read();
     if (isDigit(inChar)) {
@@ -28,7 +29,16 @@ void loop() {
       // clear the string for new input:
       inString = "";
     }
+  }*/
+
+
+  //caricamento di 3 secondi (il tempo che ci impiega il giroscopio per calibrarsi)
+  for(int i = 0; i<5; i++){
+    caricamento();
   }
+  cleanByte();
+  setNumero(9);
+  delay(5000);
 }
 
 //Metodo per stampare sul display un numero tra 0 e 9
@@ -138,4 +148,23 @@ void cleanByte(){
    digitalWrite(latchPin, LOW);
    shiftOut(dataPin, clockPin, LSBFIRST, leds);
    digitalWrite(latchPin, HIGH);
+}
+
+
+//medoto CARICAMENTO
+void caricamento(){
+  for(int i = 0; i<7; i++){
+    cleanByte();
+    if(i == 0){
+      bitSet(leds, 7);
+      updateShiftRegister(); 
+      delay(100); 
+    }
+    if(i==5){}
+    else{
+      bitSet(leds, i);
+      updateShiftRegister();
+      delay(100);
+    }
+  }  
 }
