@@ -19,11 +19,11 @@ Una volta che il dato si ferma, capisce quale faccia è rivolta verso e l'alto e
 
 ## Specifiche:
 Ho deciso di suddividere il progetto in più step:
-1.  Funzione_1, [Sketch_NumeroRandom](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/CODICE/numeroRondom.ino). Gestione del giroscopio e accellerometro (**GY-521 MPU-6050 - Modulo a 3 assi**) come seed per la generazione del numero rondom. 
+1.  Funzione_1, [Sketch_NumeroRandom](https://github.com/GiacomoAndreata/RandomicDice/blob/master/CODICE/Shift_Register/Shift_Register.ino). Gestione del giroscopio e accellerometro (**GY-521 MPU-6050 - Modulo a 3 assi**) come seed per la generazione del numero rondom. 
 
 ![GY-521 MPU-6050](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/img/GY-521%20-%20Layout03.jpg)
 
-2.  Utilizzo dello shift register (74hc595) per il controllo del display a 1 bit, così da ridurre i pin da 10 a 3. [Sketch_shiftRegister](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/CODICE/Shift_Register.ino)
+2.  Utilizzo dello shift register (74hc595) per il controllo del display a 1 bit, così da ridurre i pin da 10 a 3. [Sketch_shiftRegister](https://github.com/GiacomoAndreata/RandomicDice/blob/master/CODICE/Shift_Register/Shift_Register.ino)
 
 ![img 74hc595 e display](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/img/Schema%20SchiftRegister%20e%20Display.png)
 
