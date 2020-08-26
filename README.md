@@ -1,7 +1,21 @@
-# RandomicDice
+# RandomicDice #
 L'idea finale di questo progetto è la realizzazione di un dato a 6 facce "intelligente". 
 Il cubo una volta che capisce di essere stato lanciato, genera in modo random un numero, tra 0 e n (con n da definire) usando l'accellerometro come seed. 
 Una volta che il dato si ferma, capisce quale faccia è rivolta verso e l'alto e solo in quel lato mostra il risultato.
+
+## Hardware e materiale utilizzato:
+*   ESP32
+*   Modulo GY-521 MPU-6050
+*   Display Digitale a 7 segmenti (10 pin)
+*   Schift Register 74hc595
+*   2 resistenze da 1k Ogms 5%
+*   Millefori
+*   Vari cavi e interruttori
+
+## Librerie utilizzate:
+*   Wire.h
+*   ...
+
 
 ## Specifiche
 Ho deciso di suddividere il progetto in più step:
