@@ -17,7 +17,7 @@ Una volta che il dato si ferma, capisce quale faccia è rivolta verso e l'alto e
 *   ...
 
 
-## Specifiche
+## Specifiche:
 Ho deciso di suddividere il progetto in più step:
 1.  Funzione_1, [Sketch_NumeroRandom](https://github.com/GiacomoAndreata/ProgettoDado_SistemiEmbeded/blob/master/numeroRondom.ino). Gestione del giroscopio e accellerometro (**GY-521 MPU-6050 - Modulo a 3 assi**) come seed per la generazione del numero rondom. 
 
