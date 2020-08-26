@@ -1,3 +1,8 @@
+/*
+ * Sketch lettura giroscopio e generazione numero random
+ * I pin sul esp32 per SCL e SDA (pin giroscopio) sono rispettivamente 22 e il 21
+ */
+
 #include <MPU6050_tockn.h>
 #include<Wire.h>
 
@@ -5,12 +10,11 @@
 MPU6050 mpu6050(Wire);
 int AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ;
 
-
 int numberRandom;
 
 void setup(){
   Serial.begin(115200);
-  //randomSeed(???);
+  randomSeed(analogRead(0));
   //giroscopio
   Wire.begin();
   mpu6050.begin();
@@ -32,7 +36,8 @@ void loop(){
   Serial.print("GyX:"); Serial.println(GyX);
   
   
-  //numberRandom = random(10);
+  numberRandom = random(10);
+  Serial.println(numberRandom);
   delay(1000);
   
 }
