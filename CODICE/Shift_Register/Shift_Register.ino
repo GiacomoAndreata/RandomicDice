@@ -1,8 +1,8 @@
-//scketch Schift Register 74HC595
+//scketch Schift Register 74HC595 con ESP32
 
-int latchPin = 5;  // Latch pin Digital pin 5
-int clockPin = 6; // Clock pin Digital pin 6
-int dataPin = 4;  // Data pin Digital pin 4
+int clockPin = 27; // cavo arancione
+int latchPin = 26;  // cavo giallo
+int dataPin = 25;  // cavo verde
 int input = 0;
 byte leds = 0;
 String inString = ""; 
@@ -11,7 +11,7 @@ void setup() {
   pinMode(latchPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
   pinMode(clockPin, OUTPUT);
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop() {
