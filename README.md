@@ -13,7 +13,7 @@ Una volta che il dato si ferma, capisce quale faccia è rivolta verso e l'alto e
 *   Vari cavi e interruttori
 
 ## Librerie utilizzate:
-*   MPU6050_tockn.h
+*   MPU6050_tockn.h (https://github.com/electroniccats/mpu6050)
 *   Wire.h
 *   ...
 
