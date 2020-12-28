@@ -10,7 +10,8 @@ Una volta che il dato si ferma, capisce quale faccia è rivolta verso e l'alto e
 *   Schift Register 74hc595
 *   2 resistenze da 1k Ogms 5%
 *   Millefori
-*   Vari cavi e interruttori
+*   2 pulsanti
+*   Cavi vari
 
 ## Librerie utilizzate:
 *   MPU6050_tockn.h (https://github.com/electroniccats/mpu6050)
@@ -30,5 +31,5 @@ Ho deciso di suddividere il progetto in più step:
 
 3.  Funzione_2: allo squotimento dell'accellerometro fa partire la funzione_1 e poi mostra il numero sul display.
 4.  Funzione_: quando il cubo una volta che è stato mosso viene posato, mostra il numero sul display.
-5.  Aggiunta di uno o più bottoni per settare il range del dado (default 0 - 9).
+5.  Aggiunta di uno 2 bottoni per settare il range del dado (default 0 - 9).
 6. ...
