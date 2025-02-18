@@ -8,12 +8,12 @@
 
 //giroscopio
 MPU6050 mpu6050(Wire);
-int AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ;
+double AcX,AcY,AcZ,Tmp,GyX,GyY,GyZ;
 
 int numberRandom;
 
 void setup(){
-  Serial.begin(115200);
+  Serial.begin(9600);
   randomSeed(analogRead(0));
   //giroscopio
   Wire.begin();
@@ -31,13 +31,21 @@ void loop(){
   GyX=mpu6050.getGyroX();  //
   GyY=mpu6050.getGyroY();  //
   GyZ=mpu6050.getGyroZ();  //
+  // Serial.println("-----------------------------");
+  // Serial.print("X: "); Serial.println(mpu6050.getGyroX());
+  
+  Serial.print("AcX:"); Serial.println(AcX);
+  Serial.print("AcY:"); Serial.println(AcY);
+  Serial.print("AcZ:"); Serial.println(AcZ);
+  
+  // if(AcX > 200 || AcY > 200 || AcZ > 200){
+  //   delay(1000);
+  // }
+  //   numberRandom = random(10);
+  //   Serial.println("-----------------------------");
+  //   Serial.println(numberRandom);
 
-  Serial.print("X: "); Serial.println(mpu6050.getGyroX());
-  Serial.print("GyX:"); Serial.println(GyX);
+  delay(300);
   
-  
-  numberRandom = random(10);
-  Serial.println(numberRandom);
-  delay(1000);
   
 }

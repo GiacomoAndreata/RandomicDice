@@ -1,141 +1,67 @@
 //scketch Schift Register 74HC595 con ESP32
 
-int clockPin = 27; // cavo arancione
-int latchPin = 26;  // cavo giallo
-int dataPin = 25;  // cavo verde
+int clockPin = 27; // cavo arancione STCP
+int latchPin = 26;  // cavo giallo SHCP
+int dataPin = 25;  // cavo verde DS
 int input = 0;
 byte leds = 0;
 String inString = ""; 
+
+int digits [10][8]{
+  {0,1,1,1,1,0,1,1}, // digit 0
+  {0,1,1,0,0,0,0,0}, // digit 1
+  {0,1,0,1,1,1,0,1}, // digit 2
+  {0,1,1,1,0,1,0,1}, // digit 3
+  {0,1,1,0,0,1,1,0}, // digit 4
+  {0,0,1,1,0,1,1,1}, // digit 5
+  {0,0,1,1,1,1,1,1}, // digit 6
+  {0,1,1,0,0,0,0,1}, // digit 7
+  {0,1,1,1,1,1,1,1}, // digit 8
+  {0,1,1,1,0,1,1,1}  // digit 9
+};
 
 void setup() {
   pinMode(latchPin, OUTPUT);
   pinMode(dataPin, OUTPUT);
   pinMode(clockPin, OUTPUT);
-  Serial.begin(115200);
+  Serial.begin(9600);
 }
 
 void loop() {
-  /* //Inserimento valori da monitor seriale
-  while (Serial.available() > 0) {
-    int inChar = Serial.read();
-    if (isDigit(inChar)) {
-      // convert the incoming byte to a char and add it to the string:
-      inString += (char)inChar;
-    }
-    // if you get a newline, print the string, then the string's value:
-    if (inChar == '\n') {
-      Serial.println(inString.toInt());
-      setNumero(inString.toInt());
-      // clear the string for new input:
-      inString = "";
-    }
-  }*/
+  //Inserimento valori da monitor seriale
+  // while (Serial.available() > 0) {
+  //   int inChar = Serial.read();
+  //   if (isDigit(inChar)) {
+  //     // convert the incoming byte to a char and add it to the string:
+  //     inString += (char)inChar;
+  //   }
+  //   // if you get a newline, print the string, then the string's value:
+  //   if (inChar == '\n') {
+  //     Serial.println(inString.toInt());
+  //     displayDigit(inString.toInt());
+  //     // clear the string for new input:
+  //     inString = "";
+  //   }
+  // }
 
 
   //caricamento di 3 secondi (il tempo che ci impiega il giroscopio per calibrarsi)
   for(int i = 0; i<5; i++){
     caricamento();
   }
+  displayDigit(random(0, 9));
+  delay(1000);
   cleanByte();
-  setNumero(9);
-  delay(5000);
+  delay(1000);
 }
 
-//Metodo per stampare sul display un numero tra 0 e 9
-void setNumero(int numero){
-  switch(numero){
-    case 0:
-      cleanByte();
-      bitSet(leds, 7);
-      bitSet(leds, 1);
-      bitSet(leds, 2);
-      bitSet(leds, 3);
-      bitSet(leds, 4);
-      bitSet(leds, 6);
-      updateShiftRegister();
-      break;
-    case 1:
-      cleanByte();
-      bitSet(leds, 1);
-      bitSet(leds, 2);
-      updateShiftRegister();
-      break;
-    case 2:
-      cleanByte();
-      bitSet(leds, 7);
-      bitSet(leds, 1);
-      bitSet(leds, 5);
-      bitSet(leds, 4);
-      bitSet(leds, 3);
-      updateShiftRegister();
-      break;
-    case 3:
-      cleanByte();
-      bitSet(leds, 7);
-      bitSet(leds, 1);
-      bitSet(leds, 2);
-      bitSet(leds, 3);
-      bitSet(leds, 5);
-      updateShiftRegister();
-      break;
-    case 4:
-      cleanByte();
-      bitSet(leds, 5);
-      bitSet(leds, 6);
-      bitSet(leds, 1);
-      bitSet(leds, 2);
-      updateShiftRegister();
-      break;
-    case 5:
-      cleanByte();
-      bitSet(leds, 7);
-      bitSet(leds, 5);
-      bitSet(leds, 6);
-      bitSet(leds, 2);
-      bitSet(leds, 3);
-      updateShiftRegister();
-      break;
-    case 6:
-      cleanByte();
-      bitSet(leds, 7);
-      bitSet(leds, 5);
-      bitSet(leds, 6);
-      bitSet(leds, 2);
-      bitSet(leds, 4);
-      bitSet(leds, 3);
-      updateShiftRegister();
-      break;
-    case 7:
-      cleanByte();
-      bitSet(leds, 7);
-      bitSet(leds, 1);
-      bitSet(leds, 2);
-      updateShiftRegister();
-      break;
-    case 8:
-      cleanByte();
-      bitSet(leds, 7);
-      bitSet(leds, 1);
-      bitSet(leds, 2);
-      bitSet(leds, 3);
-      bitSet(leds, 4);
-      bitSet(leds, 5);
-      bitSet(leds, 6);
-      updateShiftRegister();
-      break;
-    case 9:
-      cleanByte();
-      bitSet(leds, 7);
-      bitSet(leds, 1);
-      bitSet(leds, 2);
-      bitSet(leds, 3);
-      bitSet(leds, 6);
-      bitSet(leds, 5);
-      updateShiftRegister();
-      break;
+void displayDigit (int digit) {
+  cleanByte();
+  for (int i=7; i>=0; i--){
+    if (digits[digit][i] == 1) bitSet(leds, i);
   }
+  updateShiftRegister();
 }
-
 
 void updateShiftRegister()
 {
@@ -149,8 +75,6 @@ void cleanByte(){
    shiftOut(dataPin, clockPin, LSBFIRST, leds);
    digitalWrite(latchPin, HIGH);
 }
-
-
 //medoto CARICAMENTO
 void caricamento(){
   for(int i = 0; i<7; i++){
@@ -166,5 +90,6 @@ void caricamento(){
       updateShiftRegister();
       delay(100);
     }
-  }  
+  }
+  cleanByte();
 }
